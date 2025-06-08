@@ -4,6 +4,8 @@ import cloudinary from '../../Utils/cloudinary.js';
 import productModel from "../../../DB/models/product.model.js";
 
 export const create = async (req, res) => {
+    console.log(req.files);
+
     const { name, categoryId ,discount,price} = req.body;
     try {
         const checkCategory = await categoryModel.findById(categoryId);
@@ -50,6 +52,7 @@ export const create = async (req, res) => {
         return res.status(500).json({ message: "Internal server error", error });
     }
 };
+
 
 export const get=async(req,res)=>{
     const products =await productModel.find({})
