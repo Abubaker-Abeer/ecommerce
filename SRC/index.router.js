@@ -2,6 +2,7 @@ import connectDB  from '../DB/connection.js';
 import cors from 'cors';
 import AuthRouter from "./modules/auth/auth.router.js";
 import AuthCategory from "./modules/category/category.router.js";
+import Authproduct from "./modules/Product/product.router.js";
 const initApp= async(app,express)=>{
    app.use(cors());
    connectDB();
@@ -13,7 +14,7 @@ const initApp= async(app,express)=>{
 
   app.use("/auth", AuthRouter);
   app.use("/categories", AuthCategory);
- 
+  app.use("/products", Authproduct); 
 
     app.use((err,req,res,next)=>{
     return  res.status(err.statusCode).json({ msg: err.message });
