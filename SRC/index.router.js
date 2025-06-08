@@ -5,6 +5,8 @@ import AuthCategory from "./modules/category/category.router.js";
 import Authproduct from "./modules/Product/product.router.js";
 import Authcoupon from "./modules/Coupon/coupon.router.js";
 import Authcarts from "./modules/Cart/cart.router.js";
+import Authorders from "./modules/Order/order.router.js"
+
 
 const initApp= async(app,express)=>{
    app.use(cors());
@@ -20,6 +22,8 @@ const initApp= async(app,express)=>{
   app.use("/products", Authproduct); 
   app.use("/coupon", Authcoupon);
   app.use("/cart", Authcarts);
+  app.use("/orders", Authorders);
+
 
     app.use((err,req,res,next)=>{
     return  res.status(err.statusCode).json({ msg: err.message });
